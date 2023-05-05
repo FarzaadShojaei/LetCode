@@ -52,7 +52,15 @@ const browser=await chromium.launch({
 headless:false
 
 })
-const context=await browser.newContext();
+const context=await browser.newContext({
+  recordVideo:{
+    dir: "./videos/",
+    size :{
+      width:800,
+      height:800
+    }
+  }
+});
 const page = await context.newPage();
 await page.goto('https://letcode.in/')
 await page.click("tex=Log in");
